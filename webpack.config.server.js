@@ -2,7 +2,7 @@ const path = require('path')
 
 const dotenv = require('dotenv')
 
-const nodeExternals = requiere('webpack-node-externals')
+const nodeExternals = require('webpack-node-externals')
 
 dotenv.config()
 
