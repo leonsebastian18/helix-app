@@ -14,7 +14,7 @@ const app: Express = express();
 const isDev = process.env.NODE_ENV !=='production'
 
 if(isDev){
-    app.use(webpackMiddleware)
+    app.use(webpackMiddleware())
 } else {
     app.use(express.static('dist')) 
 }
@@ -26,11 +26,11 @@ app.get('/galaxias', async (req: Request, res: Response) => {
 
         const {data} = await axios.get("https://images-api.nasa.gov/search?q=galaxies")
 
-        const initialProps = {
+        const initalProps = {
             galaxies: data?.collection?.items
         }
 
-        res.send(render(req.url, initialProps))
+        res.send(render(req.url, initalProps))
 
     } catch (error) {
         throw new Error("An error ocurred in /galaxias", error)
